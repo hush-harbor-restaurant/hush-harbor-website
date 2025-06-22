@@ -2,8 +2,8 @@
   "name": "hush-harbor",
   "private": true,
   "scripts": {
-    "build": "npm run build --workspace frontend",
-    "studio": "cd cms && sanity build && cp -r dist ../frontend/dist/studio"
+    "studio": "cd cms && sanity build && cp -r dist ../frontend/dist/studio",
+    "build": "npm run build --workspace frontend"
   },
   "workspaces": [
     "frontend",
