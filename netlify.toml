@@ -1,0 +1,14 @@
+# Astro Frontend (root domain)
+[build]
+  command = "npm run build --workspace frontend"
+  publish = "frontend/dist"
+
+# Sanity Studio on subdomain
+[[redirects]]
+  from = "/studio/*"
+  to = "/studio/index.html"
+  status = 200
+
+# Monorepo setting (optional but safe)
+[context.production.environment]
+  NODE_VERSION = "18"
