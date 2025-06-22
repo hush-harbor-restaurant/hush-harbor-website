@@ -1,6 +1,6 @@
 # Astro Frontend (root domain)
 [build]
-  command = "npm run build --workspace frontend"
+  command = "npm run build --workspace frontend && npm run studio"
   publish = "frontend/dist"
 
 # Sanity Studio on subdomain
