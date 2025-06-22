@@ -1,9 +1,23 @@
-# Sanity Clean Content Studio
+# Hush Harbor Website
 
-Congratulations, you have now installed the Sanity Content Studio, an open-source real-time content editing environment connected to the Sanity backend.
+This is a monorepo project using:
 
-Now you can do the following things:
+- **Sanity.io** (`/cms`) for the content management system
+- **Astro** (`/frontend`) for the static site frontend
+- **Netlify** for hosting
 
-- [Read “getting started” in the docs](https://www.sanity.io/docs/introduction/getting-started?utm_source=readme)
-- [Join the community Slack](https://snty.link/community/?utm_source=readme)
-- [Extend and build plugins](https://www.sanity.io/docs/content-studio/extending?utm_source=readme)
+## 🛠️ Requirements
+
+- Node.js (v18+ recommended)
+- npm (comes with Node)
+- [Sanity CLI](https://www.sanity.io/docs/cli) (optional but helpful)
+
+## 🚀 Getting Started
+
+1. **Install dependencies**
+
+From the root directory:
+
+```bash
+npm install
+```
