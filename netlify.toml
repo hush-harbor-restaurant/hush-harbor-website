@@ -3,11 +3,16 @@
   command = "npm run build --workspace frontend && npm run studio"
   publish = "frontend/dist"
 
-# Sanity Studio on subdomain
+[[redirects]]
+  from = "/studio"
+  to = "/studio/index.html"
+  status = 200
+
 [[redirects]]
   from = "/studio/*"
   to = "/studio/index.html"
   status = 200
+  force = false
 
 # Monorepo setting (optional but safe)
 [context.production.environment]

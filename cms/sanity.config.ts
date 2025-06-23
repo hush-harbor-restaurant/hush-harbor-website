@@ -6,6 +6,7 @@ import {schemaTypes} from './schemaTypes'
 export default defineConfig({
   name: 'default',
   title: 'Hush Harbor',
+  basePath: '/studio',
 
   projectId: '0s7omnpm',
   dataset: 'production',
