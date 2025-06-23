@@ -1,19 +1,9 @@
 # Astro Frontend (root domain)
 [build]
-  command = "npm run build --workspace frontend && npm run studio"
-  publish = "frontend/dist"
+  command = "npm run build"
+  publish = "dist"
 
 [[redirects]]
-  from = "/studio"
-  to = "/studio/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/studio/*"
-  to = "/studio/index.html"
-  status = 200
-  force = false
-
-# Monorepo setting (optional but safe)
-[context.production.environment]
-  NODE_VERSION = "18"
+from = "/admin/*"
+to = "/admin/index.html"
+status = 200

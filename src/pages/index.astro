@@ -1,0 +1,15 @@
+---
+import Greeting from "../components/Greeting";
+import Layout from "../layouts/Layout.astro";
+import { sanityClient } from "sanity:client";
+
+const posts = await sanityClient.fetch(`*[_type == "post"]{_id, title}`);
+---
+
+<Layout>
+  <h1>Sanity Posts</h1>
+  <ul>
+    {posts.map((post) => <li>{post.title}</li>)}
+  </ul>
+  <Greeting />
+</Layout>

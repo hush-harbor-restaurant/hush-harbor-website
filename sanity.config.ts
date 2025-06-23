@@ -1,22 +1,14 @@
 import {defineConfig} from 'sanity'
-import {structureTool} from 'sanity/structure'
-import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemaTypes'
+import { structureTool } from "sanity/structure";
 
 export default defineConfig({
   name: 'default',
   title: 'Hush Harbor',
-  basePath: '/studio',
-
   projectId: '0s7omnpm',
   dataset: 'production',
-
-  plugins: [structureTool(), visionTool()],
-
+  plugins: [structureTool()],
   schema: {
     types: schemaTypes,
-  },
-  vite: {
-    base: '/studio/',
-  },
+  }
 })
