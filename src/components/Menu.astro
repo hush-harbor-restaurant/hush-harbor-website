@@ -18,27 +18,29 @@ const menuSections: MenuSection[] =
 }`);
 ---
 
-<section id="menu" class="px-10 pt-20 bg-forest-dark pb-10">
-  <h1 class="text-3xl font-bold mb-6">Menu</h1>
+<section id="menu" class="px-10 pt-20 bg-highlight pb-10 text-trunk">
+  <h1 class="text-3xl font-bold mb-6 text-canopy">Menu</h1>
 
   {
     menuSections.map((section) => (
       <div class="mb-10">
-        <h2 class="text-2xl font-semibold mb-2">{section.title}</h2>
-        <ul class="space-y-2">
+        <h2 class="text-2xl font-semibold mb-2 text-undergrowth">
+          {section.title}
+        </h2>
+        <ul class="space-y-4">
           {section.items.map((item) => (
             <li>
               <div class="flex justify-between items-start">
                 <div>
-                  <p class="font-medium">{item.name}</p>
+                  <p class="font-medium text-trunk">{item.name}</p>
                   {item.description && (
-                    <p class="text-sm text-gray-700">{item.description}</p>
+                    <p class="text-sm text-undergrowth">{item.description}</p>
                   )}
                 </div>
-                <span class="ml-4 font-bold">${item.price}</span>
+                <span class="ml-4 font-bold text-accent">${item.price}</span>
               </div>
               {item.isHappyHour && (
-                <span class="text-xs text-yellow-600">Happy Hour</span>
+                <span class="text-xs text-accent">Happy Hour</span>
               )}
             </li>
           ))}
