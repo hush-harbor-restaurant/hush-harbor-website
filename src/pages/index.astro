@@ -1,15 +1,24 @@
 ---
+import Navbar from "../components/Navbar";
 import Greeting from "../components/Greeting";
 import Layout from "../layouts/Layout.astro";
 import { sanityClient } from "sanity:client";
+import "../styles/global.css";
 
 const posts = await sanityClient.fetch(`*[_type == "post"]{_id, title}`);
 ---
 
 <Layout>
-  <h1>Sanity Posts</h1>
-  <ul>
-    {posts.map((post) => <li>{post.title}</li>)}
-  </ul>
-  <Greeting />
+  <Navbar client:load />
+
+  <section id="menu" class="px-10 pt-20 bg-red-200">
+    <h1 class="text-3xl font-bold">Menu</h1>
+    <ul class="mt-4">
+      {posts.map((post) => <li>{post.title}</li>)}
+    </ul>
+  </section>
+
+  <section id="events" class="px-10 pt-10 bg-green-200">
+    <h1 class="text-3xl font-bold">Events</h1>
+  </section>
 </Layout>
