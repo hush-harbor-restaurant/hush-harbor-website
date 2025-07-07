@@ -1,15 +1,19 @@
 ---
-import Greeting from "../components/Greeting";
+import Navbar from "../components/Navbar";
 import Layout from "../layouts/Layout.astro";
-import { sanityClient } from "sanity:client";
-
-const posts = await sanityClient.fetch(`*[_type == "post"]{_id, title}`);
+import Menu from "../components/Menu.astro";
+import FadeImage from "../components/FadeImage.astro";
+import "../styles/global.css";
+import picture from "../../public/favicon.png";
 ---
 
 <Layout>
-  <h1>Sanity Posts</h1>
-  <ul>
-    {posts.map((post) => <li>{post.title}</li>)}
-  </ul>
-  <Greeting />
+  <Navbar client:load />
+  <FadeImage src={picture} alt="Painting of trees and a pond" />
+
+  <Menu />
+
+  <section id="events" class="px-10 pt-10 bg-green-200">
+    <h1 class="text-3xl font-bold">Events</h1>
+  </section>
 </Layout>

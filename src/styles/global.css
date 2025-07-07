@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --color-canopy: #2e4732;
+  --color-undergrowth: #5e7c58;
+  --color-skytone: #c5cfd1;
+  --color-trunk: #6d5844;
+  --color-highlight: #f1e8d2;
+  --color-accent: #c1a96e;
+}
+
+@layer utilities {
+  .bg-canopy {
+    background-color: var(--color-canopy);
+  }
+  .bg-undergrowth {
+    background-color: var(--color-undergrowth);
+  }
+  .bg-skytone {
+    background-color: var(--color-skytone);
+  }
+  .bg-trunk {
+    background-color: var(--color-trunk);
+  }
+  .bg-highlight {
+    background-color: var(--color-highlight);
+  }
+
+  .text-canopy {
+    color: var(--color-canopy);
+  }
+  .text-undergrowth {
+    color: var(--color-undergrowth);
+  }
+  .text-skytone {
+    color: var(--color-skytone);
+  }
+  .text-trunk {
+    color: var(--color-trunk);
+  }
+  .text-highlight {
+    color: var(--color-highlight);
+  }
+  .text-accent {
+    color: var(--color-accent);
+  }
+}
