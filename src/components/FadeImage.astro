@@ -1,0 +1,22 @@
+---
+import { Image } from "astro:assets";
+const { src, alt } = Astro.props;
+---
+
+<div class="relative">
+  <Image
+    src={src}
+    alt={alt}
+    class="opacity-0 transition-opacity duration-500 ease-in-out will-change-opacity fade-image w-full h-auto"
+  />
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const img = document.querySelector(".fade-image");
+      if (img) {
+        requestAnimationFrame(() => {
+          img.classList.add("opacity-100");
+        });
+      }
+    });
+  </script>
+</div>
