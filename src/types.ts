@@ -13,7 +13,8 @@ export interface MenuSection {
   type:
     | "food"
     | "cocktail"
-    | "beer"
+    | "draft beer"
+    | "bottles & cans"
     | "wine"
     | "non-alcoholic"
     | "special"

@@ -14,7 +14,8 @@ export default defineType({
         list: [
           "food",
           "cocktail",
-          "beer",
+          "draft beer",
+          "bottles & cans",
           "wine",
           "non-alcoholic",
           "special",
