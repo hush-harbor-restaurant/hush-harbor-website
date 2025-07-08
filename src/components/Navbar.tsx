@@ -14,21 +14,25 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`${
-        isSticky ? "fixed top-0" : "fixed bottom-0"
-      } w-full z-50 bg-canopy px-4 py-4 md:flex md:items-center md:justify-between text-highlight transition-all duration-300`}
+      className={`fixed w-full z-50 text-stone-100 transition-all duration-300
+    max-md:bottom-0 max-md:bg-lime-800
+    ${isSticky ? "md:top-0" : "md:bottom-0"} md:flex md:justify-between`}
     >
-      <div className="flex justify-between items-center">
-        <a href="/" className="text-xl font-bold text-highlight">
+      <div className="flex justify-between items-center max-mod:px-4 max-md:py-3">
+        <div
+          className={`text-xl font-bold text-stone-300 md:bg-lime-800 px-5 py-2 ${
+            isSticky ? "md:rounded-br-md" : "md:rounded-tr-md"
+          }`}
+        >
           Hush Harbor
-        </a>
+        </div>
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden block cursor-pointer"
+          className="md:hidden block cursor-pointer px-4"
           aria-label="Toggle Menu"
         >
           <svg
-            className="w-6 h-6 text-highlight"
+            className="w-6 h-6 text-stone-100"
             fill="none"
             stroke="currentColor"
             strokeWidth={2}
@@ -42,15 +46,17 @@ const Navbar = () => {
       </div>
 
       <ul
-        className={`mt-4 md:mt-0 md:flex md:space-x-6 ${
+        className={`${
           isOpen ? "block" : "hidden"
-        } md:block`}
+        } md:flex md:flex-row md:space-x-6 px-5 py-1 max-md:pb-2 bg-lime-800 flex-col md:flex md:items-center ${
+          isSticky ? "md:rounded-bl-md" : "md:rounded-tl-md"
+        }`}
       >
         {navLinks.map((link) => (
           <li key={link.name}>
             <a
               href={link.href}
-              className="block py-2 md:py-0 text-highlight hover:text-accent transition-colors duration-200"
+              className="block text-stone-100 max-md:py-3 hover:text-amber-500 transition-colors duration-200"
               onClick={() => setIsOpen(false)}
             >
               {link.name}

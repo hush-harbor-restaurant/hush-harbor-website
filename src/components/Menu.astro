@@ -18,15 +18,13 @@ const menuSections: MenuSection[] =
 }`);
 ---
 
-<section id="menu" class="px-10 pt-20 bg-forest-dark pb-10 text-mist-light">
-  <h1 class="text-3xl font-bold mb-6 text-skytone">Menu</h1>
+<section id="menu" class="px-10 pt-20 bg-canopy pb-10">
+  <h1 class="text-3xl font-bold mb-6">Menu</h1>
 
   {
     menuSections.map((section) => (
       <div class="mb-10">
-        <h2 class="text-2xl font-semibold mb-2 text-mist-light">
-          {section.title}
-        </h2>
+        <h2 class="text-2xl font-semibold mb-2">{section.title}</h2>
         <ul class="space-y-4">
           {section.items.map((item) => (
             <li>
