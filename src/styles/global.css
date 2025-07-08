@@ -1,6 +1,14 @@
 @import "tailwindcss";
 
-@theme { --color-leafy-foreground: rgb(41, 54, 31); }
+@theme { 
+  --color-leafy-foreground: rgb(41, 54, 31);
+  --color-leafy-light: rgb(110, 138, 88);
+  --color-leafy-dark: rgb(24, 34, 20);
+  --color-sky: rgb(194, 180, 150);
+  --color-water: rgb(108, 118, 105);
+  --color-tree-bark: rgb(96, 78, 57);
+  --color-grass: rgb(130, 110, 62);
+}
 
 html {
   scroll-behavior: smooth;

@@ -2,18 +2,18 @@
 import { sanityClient } from "sanity:client";
 
 // Fetch the first uploaded eventsImage
-const eventsImage = await sanityClient.fetch(`*[_type == "eventsImage"][0]{
-    title,
-    "src": image.asset->url,
-    alt
-    }`);
+const eventsImage = await sanityClient.fetch(`*[_id == "eventsImage"][0]{
+  title,
+  "src": image.asset->url,
+  alt
+}`);
 ---
 
-<section id="events" class="px-4 pt-10 pb-10 bg-amber-900 text-stone-200">
+<section id="events" class="px-4 pt-10 pb-10 bg-tree-bark text-stone-200">
   <div class="mx-auto">
-    <div class="grid lg:grid-cols-2 gap-10 items-start">
+    <div class="grid lg:grid-cols-2 gap-10 items-center">
       <!-- Left: Text + Image -->
-      <div>
+      <div class="flex flex-col self-center mx-auto max-w-xl w-full">
         <h1 class="text-4xl font-bold mb-4">Events</h1>
         <p class="mb-4">
           Our carriage house is open with its very own bar and wood-burning
@@ -29,10 +29,10 @@ const eventsImage = await sanityClient.fetch(`*[_type == "eventsImage"][0]{
             <img
               src={eventsImage.src}
               alt={eventsImage.alt || eventsImage.title}
-              class="w-full h-64 object-cover rounded-lg"
+              class="w-full h-100 object-cover rounded-lg"
             />
           ) : (
-            <div class="w-full h-64 bg-stone-200 rounded-lg flex items-center justify-center text-stone-500 text-sm">
+            <div class="w-full h-100 bg-stone-200 rounded-lg flex items-center justify-center text-stone-500 text-sm">
               No image found
             </div>
           )
