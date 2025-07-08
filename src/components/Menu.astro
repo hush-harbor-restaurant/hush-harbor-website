@@ -18,32 +18,33 @@ const menuSections: MenuSection[] =
 }`);
 ---
 
-<section id="menu" class="px-10 pt-20 bg-leafy-foreground pb-10">
+<section id="menu" class="px-10 pt-20 bg-leafy-foreground pb-10 text-stone-300">
   <h1 class="text-3xl font-bold mb-6">Menu</h1>
-
-  {
-    menuSections.map((section) => (
-      <div class="mb-10">
-        <h2 class="text-2xl font-semibold mb-2">{section.title}</h2>
-        <ul class="space-y-4">
-          {section.items.map((item) => (
-            <li>
-              <div class="flex justify-between items-start">
-                <div>
-                  <p class="font-medium text-highlight">{item.name}</p>
-                  {item.description && (
-                    <p class="text-sm text-highlight">{item.description}</p>
-                  )}
+  <div class="grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    {
+      menuSections.map((section) => (
+        <div class="mb-10">
+          <h2 class="text-2xl font-semibold mb-2">{section.title}</h2>
+          <ul class="space-y-4">
+            {section.items.map((item) => (
+              <li>
+                <div class="flex justify-between items-start">
+                  <div>
+                    <p class="font-medium">{item.name}</p>
+                    {item.description && (
+                      <p class="text-sm">{item.description}</p>
+                    )}
+                  </div>
+                  <span class="ml-4 font-bold text-accent">{item.price}</span>
                 </div>
-                <span class="ml-4 font-bold text-accent">${item.price}</span>
-              </div>
-              {item.isHappyHour && (
-                <span class="text-xs text-accent">Happy Hour</span>
-              )}
-            </li>
-          ))}
-        </ul>
-      </div>
-    ))
-  }
+                {item.isHappyHour && (
+                  <span class="text-xs text-accent">Happy Hour</span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
 </section>

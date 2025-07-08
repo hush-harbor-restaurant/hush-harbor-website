@@ -1,0 +1,57 @@
+---
+import { sanityClient } from "sanity:client";
+
+// Fetch the first uploaded eventsImage
+const eventsImage = await sanityClient.fetch(`*[_type == "eventsImage"][0]{
+    title,
+    "src": image.asset->url,
+    alt
+    }`);
+---
+
+<section id="events" class="px-4 pt-10 pb-10 bg-amber-900 text-stone-200">
+  <div class="mx-auto">
+    <div class="grid lg:grid-cols-2 gap-10 items-start">
+      <!-- Left: Text + Image -->
+      <div>
+        <h1 class="text-4xl font-bold mb-4">Events</h1>
+        <p class="mb-4">
+          Our carriage house is open with its very own bar and wood-burning
+          fireplace. Rent this newly renovated space for your next big party.
+        </p>
+        <p class="mb-4">
+          Use the form to book a private room, rent the barn, or buy out the
+          whole bar.
+        </p>
+
+        {
+          eventsImage?.src ? (
+            <img
+              src={eventsImage.src}
+              alt={eventsImage.alt || eventsImage.title}
+              class="w-full h-64 object-cover rounded-lg"
+            />
+          ) : (
+            <div class="w-full h-64 bg-stone-200 rounded-lg flex items-center justify-center text-stone-500 text-sm">
+              No image found
+            </div>
+          )
+        }
+      </div>
+
+      <!-- Right: Embedded Form -->
+      <div class="w-full flex justify-center">
+        <div class="w-full max-w-[520px] aspect-[520/895]">
+          <iframe
+            title="3c7bc528-b25c-4d32-bc8c-e8b87448c304"
+            id="3c7bc528-b25c-4d32-bc8c-e8b87448c304"
+            name="3c7bc528-b25c-4d32-bc8c-e8b87448c304"
+            src="https://embed.perfectvenue.com/contact-form/0e84513faf?form-type=venue"
+            class="w-full h-full bg-neutral-300 rounded-lg"
+            style="border: none"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
