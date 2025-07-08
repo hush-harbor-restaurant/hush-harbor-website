@@ -15,6 +15,5 @@ export default defineType({
       to: [{ type: "menuSection" }],
     },
     { name: "tags", title: "Tags", type: "array", of: [{ type: "string" }] },
-    { name: "isHappyHour", title: "Happy Hour Special", type: "boolean" },
   ],
 });
