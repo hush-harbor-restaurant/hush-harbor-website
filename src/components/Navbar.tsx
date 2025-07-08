@@ -15,12 +15,12 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed w-full z-50 text-stone-100 transition-all duration-300
-    max-md:bottom-0 max-md:bg-lime-800
+    max-md:bottom-0 max-md:bg-leafy-foreground
     ${isSticky ? "md:top-0" : "md:bottom-0"} md:flex md:justify-between`}
     >
       <div className="flex justify-between items-center max-mod:px-4 max-md:py-3">
         <div
-          className={`text-xl font-bold text-stone-300 md:bg-lime-800 px-5 py-2 ${
+          className={`text-xl font-bold text-stone-300 md:bg-leafy-foreground px-5 py-2 ${
             isSticky ? "md:rounded-br-md" : "md:rounded-tr-md"
           }`}
         >
@@ -48,7 +48,7 @@ const Navbar = () => {
       <ul
         className={`${
           isOpen ? "block" : "hidden"
-        } md:flex md:flex-row md:space-x-6 px-5 py-1 max-md:pb-2 bg-lime-800 flex-col md:flex md:items-center ${
+        } md:flex md:flex-row md:space-x-6 px-5 py-1 max-md:pb-2 bg-leafy-foreground flex-col md:flex md:items-center ${
           isSticky ? "md:rounded-bl-md" : "md:rounded-tl-md"
         }`}
       >

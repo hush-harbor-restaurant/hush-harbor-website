@@ -3,12 +3,19 @@ import { Image } from "astro:assets";
 const { src, alt } = Astro.props;
 ---
 
-<div class="relative">
+<div class="relative h-screen overflow-hidden bg-leafy-foreground">
   <Image
     src={src}
     alt={alt}
-    class="opacity-0 transition-opacity duration-500 ease-in-out will-change-opacity fade-image w-full h-auto"
+    class="opacity-0 transition-opacity duration-500 ease-in-out will-change-opacity fade-image w-full h-full object-cover object-center"
   />
+
+  <!-- Bottom fade -->
+  <div
+    class="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-leafy-foreground to-transparent pointer-events-none z-10"
+  >
+  </div>
+
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const img = document.querySelector(".fade-image");
