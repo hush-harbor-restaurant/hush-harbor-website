@@ -1,7 +1,11 @@
 import { useState } from "react";
+import { useLiveScrollY } from "../hooks/useLiveScrollY";
 
-const Nav = () => {
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const scrollY = useLiveScrollY();
+
+  const isSticky = scrollY > 10;
 
   const navLinks = [
     { name: "Menu", href: "#menu" },
@@ -9,7 +13,11 @@ const Nav = () => {
   ];
 
   return (
-    <nav className="fixed w-full top-0 z-50 bg-canopy border-canopy px-4 py-4 md:flex md:items-center md:justify-between text-highlight">
+    <nav
+      className={`${
+        isSticky ? "fixed top-0" : "fixed bottom-0"
+      } w-full z-50 bg-canopy px-4 py-4 md:flex md:items-center md:justify-between text-highlight transition-all duration-300`}
+    >
       <div className="flex justify-between items-center">
         <a href="/" className="text-xl font-bold text-highlight">
           Hush Harbor
@@ -54,4 +62,4 @@ const Nav = () => {
   );
 };
 
-export default Nav;
+export default Navbar;

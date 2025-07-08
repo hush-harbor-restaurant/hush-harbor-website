@@ -4,17 +4,15 @@ html {
   scroll-behavior: smooth;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 :root {
-  --color-canopy: #2e4732;
-  --color-undergrowth: #5e7c58;
-  --color-skytone: #c5cfd1;
-  --color-trunk: #6d5844;
-  --color-highlight: #f1e8d2;
-  --color-accent: #c1a96e;
+  --color-canopy: #2e4732; /* Deep green */
+  --color-undergrowth: #5e7c58; /* Milder green */
+  --color-skytone: #c5cfd1; /* Light cloud sky */
+  --color-trunk: #4a3b2d; /* Dark bark brown */
+  --color-highlight: #e9e3d0; /* Pale beige */
+  --color-accent: #d3b274; /* Golden tan */
+  --color-forest-dark: #1e2d1f; /* New: very dark green */
+  --color-mist-light: #f7f4ec; /* New: soft light parchment */
 }
 
 @layer utilities {
@@ -33,7 +31,13 @@ html {
   .bg-highlight {
     background-color: var(--color-highlight);
   }
+  .bg-forest-dark {
+    background-color: var(--color-forest-dark);
+  }
 
+  .text-mist-light {
+    color: var(--color-mist-light);
+  }
   .text-canopy {
     color: var(--color-canopy);
   }
