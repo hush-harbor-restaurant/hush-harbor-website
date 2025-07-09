@@ -27,7 +27,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`text-xl fixed w-full z-50 text-stone-100 transition-colors duration-100
+      className={`text-xl fixed w-full z-50 text-stone-100 transition-colors duration-200
   max-md:bottom-0
   ${isSticky ? "md:top-0" : "md:bottom-0"}
   md:flex md:justify-between
@@ -63,7 +63,7 @@ const Navbar = () => {
       <ul
         className={`${
           isOpen ? "block" : "hidden"
-        } md:flex md:flex-row md:space-x-6 px-5 md:px-8 py-1 max-md:pb-2 ${sectionBgClasses[activeSection]} flex-col md:flex md:items-center transition-colors duration-100 ${
+        } md:flex md:flex-row md:space-x-6 px-5 md:px-8 py-1 max-md:pb-2 ${sectionBgClasses[activeSection]} flex-col md:flex md:items-center transition-colors duration-200 ${
           isSticky ? "md:rounded-bl-md" : "md:rounded-tl-md"
         }`}
       >
@@ -71,7 +71,7 @@ const Navbar = () => {
           <li key={link.name}>
             <a
               href={link.href}
-              className={`block max-md:py-3 hover:text-amber-500 transition-colors duration-100 ${
+              className={`block max-md:py-3 hover:text-amber-500 transition-colors duration-200 ${
                 activeSection === link.href.substring(1)
                   ? "font-bold text-amber-500"
                   : ""
