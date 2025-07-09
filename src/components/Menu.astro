@@ -20,7 +20,7 @@ const menuSections: MenuSection[] =
 
 <section
   id="menu"
-  class="px-10 pt-10 md:pt-20 bg-leafy-foreground pb-10 text-stone-300"
+  class="relative px-10 pt-10 md:pt-20 pb-20 bg-tree-bark text-stone-300"
 >
   <h1 class="text-3xl font-bold mb-6">Menu</h1>
   <div class="grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
@@ -49,5 +49,11 @@ const menuSections: MenuSection[] =
         </div>
       ))
     }
+  </div>
+
+  <!-- Bottom fade effect -->
+  <div
+    class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-leafy-dark to-transparent pointer-events-none z-10"
+  >
   </div>
 </section>

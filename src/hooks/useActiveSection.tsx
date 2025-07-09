@@ -26,7 +26,7 @@ export function useActiveSection(sectionIds: string[]) {
               history.replaceState(null, "", `#${topMost}`);
               setActiveSection(topMost);
             }
-          }, 50);
+          }, 25);
         }
       },
       {

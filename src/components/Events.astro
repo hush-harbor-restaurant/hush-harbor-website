@@ -9,21 +9,12 @@ const eventsImage = await sanityClient.fetch(`*[_id == "eventsImage"][0]{
 }`);
 ---
 
-<section id="events" class="px-4 pt-10 pb-10 bg-tree-bark text-stone-200">
+<section id="events" class="px-4 pt-15 pb-10 bg-leafy-dark text-stone-200">
   <div class="mx-auto">
     <div class="grid lg:grid-cols-2 gap-10 items-center">
       <!-- Left: Text + Image -->
       <div class="flex flex-col self-center mx-auto max-w-xl w-full">
         <h1 class="text-4xl font-bold mb-4">Events</h1>
-        <p class="mb-4">
-          Our carriage house is open with its very own bar and wood-burning
-          fireplace. Rent this newly renovated space for your next big party.
-        </p>
-        <p class="mb-4">
-          Use the form to book a private room, rent the barn, or buy out the
-          whole bar.
-        </p>
-
         {
           eventsImage?.src ? (
             <img
@@ -37,10 +28,18 @@ const eventsImage = await sanityClient.fetch(`*[_id == "eventsImage"][0]{
             </div>
           )
         }
+        <p class="mb-4">
+          Our carriage house is open with its very own bar and wood-burning
+          fireplace. Rent this newly renovated space for your next big party.
+        </p>
       </div>
 
       <!-- Right: Embedded Form -->
-      <div class="w-full flex justify-center">
+      <div class="w-full flex justify-center items-center flex-col">
+        <p class="mb-4">
+          Use the form to book a private room, rent the barn, or buy out the
+          whole bar.
+        </p>
         <div class="w-full max-w-[520px] aspect-[520/895]">
           <iframe
             title="3c7bc528-b25c-4d32-bc8c-e8b87448c304"

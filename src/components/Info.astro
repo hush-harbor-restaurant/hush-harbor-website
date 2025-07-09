@@ -1,0 +1,58 @@
+---
+import { sanityClient } from "sanity:client";
+
+const infoImage = await sanityClient.fetch(`*[_id == "infoImage"][0]{
+  title,
+  "src": image.asset->url,
+  alt
+}`);
+---
+
+<section
+  id="info"
+  class="relative px-4 pt-10 pb-10 bg-leafy-background text-stone-200 min-h-screen flex items-center min-h-screen justify-center"
+>
+  <div class="mx-auto w-9xl">
+    <div class="grid lg:grid-cols-2 gap-10 items-center">
+      <!-- Left: Info Text -->
+      <div class="flex flex-col self-center mx-auto max-w-xl w-full space-y-4">
+        <h1 class="text-4xl font-bold mt-2">Info</h1>
+        <div>
+          <p class="text-xl font-semibold">Wednesday - Saturday @5pm</p>
+        </div>
+        <div>
+          <p>1337 H Street NE</p>
+          <p>Washington, DC 20002</p>
+          <p>(202) 399-1337</p>
+          <p>drink@hillprince.com</p>
+          <p class="mt-4">
+            Located on the Streetcar line, a short ride from Union Station.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right: Info Image -->
+      <div>
+        {
+          infoImage?.src ? (
+            <img
+              src={infoImage.src}
+              alt={infoImage.alt || infoImage.title}
+              class="w-full h-auto object-cover rounded-lg"
+            />
+          ) : (
+            <div class="w-full h-100 bg-stone-200 rounded-lg flex items-center justify-center text-stone-500 text-sm">
+              No image found
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom fade effect -->
+  <div
+    class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-tree-bark to-transparent pointer-events-none z-10"
+  >
+  </div>
+</section>
