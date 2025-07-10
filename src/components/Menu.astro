@@ -1,57 +1,31 @@
 ---
-import type { MenuSection } from "../types";
 import { sanityClient } from "sanity:client";
+import type { MenuSection } from "../types";
+import { MenuWithMobileFilter } from "./MenuWithMobileFilter";
 
 const menuSections: MenuSection[] =
   await sanityClient.fetch(`*[_type == "menuSection"] | order(order asc) {
-  _id,
-  title,
-  type,
-  "items": *[_type == "menuItem" && references(^._id)] | order(name asc) {
     _id,
-    name,
-    description,
-    price,
-    tags,
-    isHappyHour
-  }
-}`);
+    title,
+    type,
+    "items": *[_type == "menuItem" && references(^._id)] | order(name asc) {
+      _id,
+      name,
+      description,
+      price,
+      tags,
+      isHappyHour
+    }
+  }`);
 ---
 
 <section
   id="menu"
   class="relative px-10 pt-10 pb-40 bg-tree-bark text-stone-300"
 >
-  <h1 class="text-3xl font-bold mb-8 text-center">Menu</h1>
-  <div class="grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-    {
-      menuSections.map((section) => (
-        <div class="mb-10">
-          <h2 class="text-2xl font-semibold mb-2 text-bayou-gold">
-            {section.title}
-          </h2>
-          <ul class="space-y-4">
-            {section.items.map((item) => (
-              <li>
-                <div class="flex justify-between items-start">
-                  <div>
-                    <p class="font-medium">{item.name}</p>
-                    {item.description && (
-                      <p class="text-sm">{item.description}</p>
-                    )}
-                  </div>
-                  <span class="ml-4 font-bold text-accent">{item.price}</span>
-                </div>
-                {item.isHappyHour && (
-                  <span class="text-xs text-accent">Happy Hour</span>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))
-    }
-  </div>
+  <h1 class="text-3xl font-bold mb-6 text-center">Menu</h1>
+
+  <MenuWithMobileFilter client:load menuSections={menuSections} />
 
   <!-- Bottom fade effect -->
   <div
