@@ -1,11 +1,5 @@
 ---
-import { sanityClient } from "sanity:client";
-
-const infoImage = await sanityClient.fetch(`*[_id == "infoImage"][0]{
-  title,
-  "src": image.asset->url,
-  alt
-}`);
+import InfoImageOverlay from "./InfoImageOverlay";
 ---
 
 <section
@@ -32,21 +26,7 @@ const infoImage = await sanityClient.fetch(`*[_id == "infoImage"][0]{
       </div>
 
       <!-- Right: Info Image -->
-      <div>
-        {
-          infoImage?.src ? (
-            <img
-              src={infoImage.src}
-              alt={infoImage.alt || infoImage.title}
-              class="w-full h-auto object-cover rounded-lg"
-            />
-          ) : (
-            <div class="w-full h-100 bg-stone-200 rounded-lg flex items-center justify-center text-stone-500 text-sm">
-              No image found
-            </div>
-          )
-        }
-      </div>
+      <InfoImageOverlay client:load />
     </div>
   </div>
 
