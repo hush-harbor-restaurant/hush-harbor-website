@@ -82,6 +82,17 @@ const Navbar = () => {
             </a>
           </li>
         ))}
+        <li>
+          <a
+            href="https://resy.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block max-md:py-3 hover:text-amber-500 transition-colors duration-200"
+            onClick={() => setIsOpen(false)}
+          >
+            Make a Reservation
+          </a>
+        </li>
       </ul>
     </nav>
   );
