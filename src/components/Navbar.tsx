@@ -29,7 +29,7 @@ const Navbar = () => {
   max-md:bottom-0
   ${isSticky ? "md:top-0" : "md:bottom-0"}
   md:flex md:justify-between
-  max-md:${sectionBgClasses[activeSection]} ${isSticky ? sectionBgClasses[activeSection] : ""}`}
+  ${sectionBgClasses[activeSection]} ${!isSticky ? "md:bg-transparent" : ""}`}
     >
       <div
         className={`flex justify-between items-center max-mod:px-4 max-md:py-3 max-md:${sectionBgClasses[activeSection]}`}
@@ -71,7 +71,7 @@ const Navbar = () => {
           <li key={link.name}>
             <a
               href={link.href}
-              className={`block max-md:py-3 hover:text-amber-500 transition-colors duration-200 ${
+              className={`block max-md:py-3 hover:text-amber-500 ${
                 activeSection === link.href.substring(1)
                   ? "font-bold text-amber-500"
                   : ""
@@ -87,7 +87,9 @@ const Navbar = () => {
             href="https://resy.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="block max-md:py-3 hover:text-amber-500 transition-colors duration-200"
+            className={
+              "block max-md:py-3 hover:text-amber-500 transition-colors duration-200"
+            }
             onClick={() => setIsOpen(false)}
           >
             Make a Reservation
