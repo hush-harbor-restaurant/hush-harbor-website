@@ -31,7 +31,9 @@ const Navbar = () => {
   md:flex md:justify-between
   max-md:${sectionBgClasses[activeSection]} ${isSticky ? sectionBgClasses[activeSection] : ""}`}
     >
-      <div className="flex justify-between items-center max-mod:px-4 max-md:py-3">
+      <div
+        className={`flex justify-between items-center max-mod:px-4 max-md:py-3 max-md:${sectionBgClasses[activeSection]}`}
+      >
         <div
           className={`text-xl font-bold text-stone-300 ${!isSticky ? "bg-leafy-foreground" : ""} md:${sectionBgClasses[activeSection]} px-5 md:px-8 py-2 ${
             isSticky ? "md:rounded-br-md" : "md:rounded-tr-md"
