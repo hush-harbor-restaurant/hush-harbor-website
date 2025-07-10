@@ -21,8 +21,6 @@ const Navbar = () => {
   const activeSection =
     useActiveSection(["home", "info", "menu", "events"]) ?? "home";
 
-  console.log({ activeSection });
-
   const isSticky = scrollY > 10;
 
   return (
