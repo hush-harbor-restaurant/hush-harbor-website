@@ -33,7 +33,7 @@ const Navbar = () => {
     >
       <div className="flex justify-between items-center max-mod:px-4 max-md:py-3">
         <div
-          className={`text-xl font-bold text-stone-300 md:${sectionBgClasses[activeSection]} px-5 md:px-8 py-2 ${
+          className={`text-xl font-bold text-stone-300 ${!isSticky ? "bg-leafy-foreground" : ""} md:${sectionBgClasses[activeSection]} px-5 md:px-8 py-2 ${
             isSticky ? "md:rounded-br-md" : "md:rounded-tr-md"
           }`}
         >
