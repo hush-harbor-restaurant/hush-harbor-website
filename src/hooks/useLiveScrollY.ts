@@ -1,13 +1,20 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export function useLiveScrollY(): number {
   const [scrollY, setScrollY] = useState(0);
+  const ticking = useRef(false);
 
   useEffect(() => {
     const update = () => {
-      const y = window.scrollY;
-      sessionStorage.setItem("scrollY", y.toString());
-      setScrollY(y);
+      if (!ticking.current) {
+        ticking.current = true;
+        requestAnimationFrame(() => {
+          const y = window.scrollY;
+          sessionStorage.setItem("scrollY", y.toString());
+          setScrollY(y);
+          ticking.current = false;
+        });
+      }
     };
 
     window.addEventListener("scroll", update, { passive: true });

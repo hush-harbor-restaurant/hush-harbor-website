@@ -3,16 +3,19 @@ import artwork from "../images/painting.png";
 import frontOfBar from "../images/front_of_bar.jpg";
 import { useState, useEffect, useRef, type RefObject } from "react";
 
-const REVEAL_DISTANCE = 150;
-
 function computeOverlayOpacity(ref: RefObject<HTMLDivElement | null>): number {
-  const startOpacityTransition =
-    window.innerHeight -
-    (ref?.current?.getBoundingClientRect()?.bottom ?? 0) -
-    25;
+  if (!ref.current) return 0;
+
+  const bottom = ref.current.getBoundingClientRect().bottom;
+  const top = ref.current.getBoundingClientRect().top;
+
+  const startOpacityTransition = window.innerHeight - bottom - 50;
+  const endOpacityTransition = top;
+
   if (startOpacityTransition <= 0) return 0;
-  if (startOpacityTransition >= REVEAL_DISTANCE) return 1;
-  return startOpacityTransition / REVEAL_DISTANCE;
+  if (startOpacityTransition >= endOpacityTransition) return 1;
+
+  return startOpacityTransition / endOpacityTransition;
 }
 
 const InfoImageOverlay = () => {
@@ -34,7 +37,7 @@ const InfoImageOverlay = () => {
       <img
         src={frontOfBar.src}
         alt="Front of the bar"
-        className="absolute inset-0 w-full h-full object-cover rounded-lg z-10 transition-opacity duration-300"
+        className="absolute inset-0 w-full h-full object-cover rounded-lg z-10"
         style={{ opacity }}
       />
     </div>
