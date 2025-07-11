@@ -60,7 +60,7 @@ export const MenuWithMobileFilter: React.FC<Props> = ({ menuSections }) => {
 
       <div className="grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {filteredSections.map((section) => (
-          <div key={section._id} className="mb-10">
+          <div key={section._id} className="mb-6">
             <h2 className="text-2xl font-semibold mb-2 text-bayou-gold">
               {section.title}
             </h2>
