@@ -64,7 +64,7 @@ export const MenuWithMobileFilter: React.FC<Props> = ({ menuSections }) => {
           </select>
         </div>
 
-        {!selectedSectionId && (
+        {!selectedSectionId && !isMobile && (
           <div className="flex items-center justify-center md:justify-end w-full md:w-1/3 mt-4 md:mt-0">
             <PanAfricaLogo />
             <div className="ml-2">= Black Owned</div>
@@ -116,6 +116,12 @@ export const MenuWithMobileFilter: React.FC<Props> = ({ menuSections }) => {
           </div>
         ))}
       </div>
+      {!selectedSectionId && isMobile && (
+        <div className="flex items-center justify-end w-full mt-4">
+          <PanAfricaLogo />
+          <div className="ml-2">= Black Owned</div>
+        </div>
+      )}
     </>
   );
 };
