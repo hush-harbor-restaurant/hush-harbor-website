@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import type { MenuSection } from "../types";
+import { PanAfricaLogo } from "./PanAfricaLogo.tsx";
 
 interface Props {
   menuSections: MenuSection[];
@@ -26,7 +27,7 @@ export const MenuWithMobileFilter: React.FC<Props> = ({ menuSections }) => {
     };
 
     window.addEventListener("resize", handleResize);
-    handleResize(); // Initialize on mount
+    handleResize();
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -37,8 +38,14 @@ export const MenuWithMobileFilter: React.FC<Props> = ({ menuSections }) => {
 
   return (
     <>
-      {isMobile && (
-        <div className="block md:hidden mb-10">
+      <div className="flex flex-col md:flex-row md:justify-between items-center mb-6">
+        <div className="hidden md:block w-1/3"></div>
+
+        <h1 className="text-3xl font-bold text-center w-1/3 max-md:mb-6">
+          Menu
+        </h1>
+
+        <div className="block md:hidden mb-2 w-full">
           <label htmlFor="section-select" className="sr-only">
             Select Menu Section
           </label>
@@ -56,18 +63,31 @@ export const MenuWithMobileFilter: React.FC<Props> = ({ menuSections }) => {
             ))}
           </select>
         </div>
-      )}
+
+        {!selectedSectionId && (
+          <div className="flex items-center justify-center md:justify-end w-full md:w-1/3 mt-4 md:mt-0">
+            <PanAfricaLogo />
+            <div className="ml-2">= Black Owned</div>
+          </div>
+        )}
+      </div>
 
       <div className="grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {filteredSections.map((section) => (
-          <div key={section._id} className="mb-6">
+          <div key={section._id}>
             <h2 className="text-2xl font-semibold mb-2 text-bayou-gold">
               {section.title}
             </h2>
             <ul className="space-y-4">
               {section.items.map((item) => (
-                <li key={item._id}>
-                  <div className="flex justify-between items-start">
+                <li
+                  key={item._id}
+                  className="flex justify-content-between items-center"
+                >
+                  {item?.tags?.includes("Black Owned") && (
+                    <PanAfricaLogo className="mr-3" />
+                  )}
+                  <div className="flex justify-between items-start w-full">
                     <div>
                       <p className="font-medium">{item.name}</p>
                       {item.description && (
@@ -83,6 +103,15 @@ export const MenuWithMobileFilter: React.FC<Props> = ({ menuSections }) => {
                   )}
                 </li>
               ))}
+              {selectedSectionId &&
+                section.items?.some((item) =>
+                  item?.tags?.includes("Black Owned")
+                ) && (
+                  <div className="flex items-center justify-end w-full md:hidden">
+                    <PanAfricaLogo />
+                    <div className="ml-2">= Black Owned</div>
+                  </div>
+                )}
             </ul>
           </div>
         ))}
