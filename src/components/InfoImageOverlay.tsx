@@ -28,18 +28,20 @@ const InfoImageOverlay = () => {
   }, [scrollY]);
 
   return (
-    <div ref={ref} className="relative w-full max-w-[600px] aspect-square">
-      <img
-        src={artwork.src}
-        alt="Hush Harbor artwork of a bauyu"
-        className="absolute inset-0 w-full h-full object-cover rounded-lg z-0"
-      />
-      <img
-        src={frontOfBar.src}
-        alt="Front of the bar"
-        className="absolute inset-0 w-full h-full object-cover rounded-lg z-10"
-        style={{ opacity }}
-      />
+    <div className="w-full flex justify-center">
+      <div ref={ref} className="relative w-full max-w-[400px] aspect-square">
+        <img
+          src={artwork.src}
+          alt="Hush Harbor artwork of a bauyu"
+          className="absolute inset-0 w-full h-full object-cover rounded-lg z-0"
+        />
+        <img
+          src={frontOfBar.src}
+          alt="Front of the bar"
+          className="absolute inset-0 w-full h-full object-cover rounded-lg z-10"
+          style={{ opacity }}
+        />
+      </div>
     </div>
   );
 };
