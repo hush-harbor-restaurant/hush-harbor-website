@@ -1,34 +1,22 @@
 ---
 import InfoImageOverlay from "./InfoImageOverlay";
+import { sanityClient } from "sanity:client";
+import { PortableText } from "@portabletext/react";
+
+const infoData = await sanityClient.fetch(`*[_type == "infoText"][0]`);
 ---
 
 <section
   id="info"
-  class="relative px-4 pb-40 bg-leafy-background text-stone-200 min-h-screen flex items-center min-h-screen justify-center"
+  class="relative px-4 pb-40 bg-leafy-background text-stone-200 min-h-screen flex items-center justify-center"
 >
   <div class="mx-auto w-9xl">
     <div class="grid lg:grid-cols-2 gap-10 md:gap-20 items-center">
       <!-- Left: Info Text -->
-      <div class="flex flex-col self-center mx-auto max-w-xl w-full space-y-4">
-        <h1 class="text-4xl font-bold mt-2">Hush Harbor</h1>
-        <p>
-          A short blurb here about the bar. The picture will transition to an
-          actual photo of the bar's exterior once we have that.
-        </p>
-        <div>
-          <p class="text-xl font-semibold">
-            Open Wednesday to Saturday 5pm-11pm
-          </p>
-        </div>
-        <div>
-          <p>1337 H Street NE</p>
-          <p>Washington, DC 20002</p>
-          <p>(202) 399-1337</p>
-          <p>drink@hillprince.com</p>
-          <p class="mt-4">
-            Located on the Streetcar line, a short ride from Union Station.
-          </p>
-        </div>
+      <div
+        class="flex flex-col self-center mx-auto max-w-xl w-full space-y-4 prose prose-invert prose-stone"
+      >
+        <PortableText value={infoData?.content} />
       </div>
 
       <!-- Right: Info Image -->

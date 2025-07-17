@@ -1,50 +1,60 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLiveScrollY } from "../hooks/useLiveScrollY";
-import clsx from "clsx";
 import { useActiveSection } from "../hooks/useActiveSection";
+import clsx from "clsx";
 
 const sectionBgClasses: Record<string, string> = {
   home: "bg-leafy-foreground",
   info: "bg-leafy-foreground",
   menu: "bg-tree-bark",
-  events: "bg-leafy-dark",
+  events: "bg-leafy-foreground",
 };
 
 const navLinks = [
   { name: "Info", href: "#info" },
   { name: "Menu", href: "#menu" },
+  { name: "Events", href: "/events" },
 ];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [pathname, setPathname] = useState("/");
+
+  useEffect(() => {
+    setPathname(window.location.pathname);
+  }, []);
+
+  // Hooks must be used unconditionally
   const scrollY = useLiveScrollY();
   const activeSection = useActiveSection(["home", "info", "menu"]) ?? "home";
 
-  const isSticky = scrollY > 10;
+  const isHome = pathname === "/";
+  const isOnTop = !isHome || (isHome && scrollY > 10);
+
+  const resolvedSection = isHome ? activeSection : "events";
+  const backgroundClass = sectionBgClasses[resolvedSection];
 
   return (
     <nav
       className={clsx(
         `text-2xl fixed w-full z-50 text-stone-100 transition-colors duration-200 max-md:bottom-0 md:flex md:justify-between`,
-        sectionBgClasses[activeSection],
+        backgroundClass,
         {
-          "md:top-0": isSticky,
-          "md:bottom-0": !isSticky,
-          "md:bg-transparent": !isSticky,
+          "md:top-0": isOnTop,
+          "md:bottom-0": !isOnTop,
+          "md:bg-transparent": isHome && !isOnTop,
         },
       )}
     >
-      <div
-        className={`flex justify-between items-center max-mod:px-4 max-md:py-3 max-md:${sectionBgClasses[activeSection]}`}
-      >
+      <div className="flex justify-between items-center max-md:px-4 max-md:py-3">
         <div
           className={clsx(
             "text-2xl font-bold text-stone-300 px-5 md:px-8 py-2",
             {
-              "bg-leafy-foreground md:rounded-tr-md": !isSticky,
-              "md:rounded-br-md": isSticky,
+              "bg-leafy-foreground md:rounded-tr-md": !isOnTop,
+              "md:rounded-br-md": isOnTop,
             },
-            `md:${sectionBgClasses[activeSection]}`,
+            `md:${backgroundClass}`,
           )}
         >
           Hush Harbor
@@ -73,36 +83,46 @@ const Navbar = () => {
           {
             block: isOpen,
             hidden: !isOpen,
-            "md:rounded-bl-md": isSticky,
-            "md:rounded-tl-md": !isSticky,
+            "md:rounded-bl-md": isOnTop,
+            "md:rounded-tl-md": !isOnTop,
           },
           "md:flex md:flex-row md:space-x-6 px-5 md:px-8 py-1 max-md:pb-2 flex-col md:items-center transition-colors duration-200",
-          sectionBgClasses[activeSection],
+          backgroundClass,
         )}
       >
-        {navLinks.map((link) => (
-          <li key={link.name}>
-            <a
-              href={link.href}
-              className={`block max-md:py-3 hover:text-amber-500 ${
-                activeSection === link.href.substring(1)
-                  ? "font-bold text-amber-500"
-                  : ""
-              }`}
-              onClick={() => setIsOpen(false)}
-            >
-              {link.name}
-            </a>
-          </li>
-        ))}
+        {navLinks.map((link) => {
+          const isHashLink = link.href.startsWith("#");
+          const isEventsLink = link.href === "/events";
+
+          const isActive = isEventsLink
+            ? pathname === "/events"
+            : isHome && activeSection === link.href.slice(1);
+
+          const resolvedHref = isHashLink ? `/${link.href}` : link.href;
+
+          return (
+            <li key={link.name}>
+              <a
+                href={resolvedHref}
+                className={clsx(
+                  "block max-md:py-3 hover:text-amber-500 transition-colors duration-200",
+                  {
+                    "font-bold text-amber-500": isActive,
+                  },
+                )}
+                onClick={() => setIsOpen(false)}
+              >
+                {link.name}
+              </a>
+            </li>
+          );
+        })}
         <li>
           <a
-            href="https://resy.com"
+            href="https://www.exploretock.com/hill-prince-washington"
             target="_blank"
             rel="noopener noreferrer"
-            className={
-              "block max-md:py-3 hover:text-amber-500 transition-colors duration-200"
-            }
+            className="block max-md:py-3 hover:text-amber-500 transition-colors duration-200"
             onClick={() => setIsOpen(false)}
           >
             Make a Reservation
