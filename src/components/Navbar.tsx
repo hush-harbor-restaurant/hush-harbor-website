@@ -25,8 +25,7 @@ const Navbar = () => {
   return (
     <nav
       className={clsx(
-        "text-xl fixed w-full z-50 text-stone-100 transition-colors duration-200",
-        "max-md:bottom-0",
+        "text-2xl fixed w-full z-50 text-stone-100 transition-colors duration-200 max-md:bottom-0",
         {
           "md:top-0": isSticky,
           "md:bottom-0": !isSticky,
@@ -41,12 +40,11 @@ const Navbar = () => {
       >
         <div
           className={clsx(
-            "text-xl font-bold text-stone-300",
+            "text-2xl font-bold text-stone-300 px-5 md:px-8 py-2",
             {
               "bg-leafy-foreground md:rounded-tr-md": !isSticky,
               "md:rounded-br-md": isSticky,
             },
-            "px-5 md:px-8 py-2",
             `md:${sectionBgClasses[activeSection]}`,
           )}
         >
@@ -79,10 +77,7 @@ const Navbar = () => {
             "md:rounded-bl-md": isSticky,
             "md:rounded-tl-md": !isSticky,
           },
-          "md:flex md:flex-row md:space-x-6",
-          "px-5 md:px-8 py-1 max-md:pb-2",
-          "flex-col md:items-center",
-          "transition-colors duration-200",
+          "md:flex md:flex-row md:space-x-6 px-5 md:px-8 py-1 max-md:pb-2 flex-col md:items-center transition-colors duration-200",
           sectionBgClasses[activeSection],
         )}
       >
