@@ -1,7 +1,8 @@
 ---
-import InfoImageOverlay from "./InfoImageOverlay";
-import { sanityClient } from "sanity:client";
 import { PortableText } from "@portabletext/react";
+import { sanityClient } from "sanity:client";
+
+import InfoImageOverlay from "./InfoImageOverlay";
 
 const infoData = await sanityClient.fetch(`*[_type == "infoText"][0]`);
 ---
