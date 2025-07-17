@@ -25,12 +25,11 @@ const Navbar = () => {
   return (
     <nav
       className={clsx(
-        "text-2xl fixed w-full z-50 text-stone-100 transition-colors duration-200 max-md:bottom-0",
+        `text-2xl fixed w-full z-50 text-stone-100 transition-colors duration-200 max-md:bottom-0 md:flex md:justify-between`,
+        sectionBgClasses[activeSection],
         {
           "md:top-0": isSticky,
           "md:bottom-0": !isSticky,
-          "md:flex md:justify-between": true,
-          [sectionBgClasses[activeSection]]: true,
           "md:bg-transparent": !isSticky,
         },
       )}

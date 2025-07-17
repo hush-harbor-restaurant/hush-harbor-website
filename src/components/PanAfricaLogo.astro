@@ -1,0 +1,14 @@
+---
+const { className = "" } = Astro.props;
+import panAfrica from "../images/pan_africa.png";
+---
+
+<div
+  class={`flex justify-center items-center w-[50px] h-[50px] ${className}`}
+>
+  <img
+    src={panAfrica.src}
+    alt="Pan Africa"
+    class="max-w-full max-h-full object-contain"
+  />
+</div>
