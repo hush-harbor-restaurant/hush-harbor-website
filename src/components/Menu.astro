@@ -52,9 +52,9 @@ const menuSections: MenuSection[] =
           <ul class="space-y-4">
             {section.items.map((item) => (
               <li class="flex justify-between items-start">
-                <div class="flex items-start w-full">
+                <div class="flex items-center w-full">
                   {item?.tags?.includes("Black Owned") && (
-                    <PanAfricaLogo class="mr-3 mt-1" />
+                    <PanAfricaLogo className="mr-3 mt-1" />
                   )}
                   <div class="flex-1">
                     <p class="font-medium">{item.name}</p>
