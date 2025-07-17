@@ -9,7 +9,7 @@ interface Props {
 export const MenuWithMobileFilter: React.FC<Props> = ({ menuSections }) => {
   const [selectedSectionId, setSelectedSectionId] = useState("");
   const [isMobile, setIsMobile] = useState(
-    typeof window !== "undefined" ? window.innerWidth < 768 : true
+    typeof window !== "undefined" ? window.innerWidth < 768 : true,
   );
 
   // Handle window resize to track if we're on mobile
@@ -105,7 +105,7 @@ export const MenuWithMobileFilter: React.FC<Props> = ({ menuSections }) => {
               ))}
               {selectedSectionId &&
                 section.items?.some((item) =>
-                  item?.tags?.includes("Black Owned")
+                  item?.tags?.includes("Black Owned"),
                 ) && (
                   <div className="flex items-center justify-end w-full md:hidden">
                     <PanAfricaLogo />

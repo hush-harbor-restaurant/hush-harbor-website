@@ -1,6 +1,6 @@
+import netlify from "@astrojs/netlify";
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
-import netlify from "@astrojs/netlify";
 import sanity from "@sanity/astro";
 import tailwindcss from "@tailwindcss/vite";
 

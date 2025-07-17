@@ -33,7 +33,7 @@ const Navbar = () => {
           "md:flex md:justify-between": true,
           [sectionBgClasses[activeSection]]: true,
           "md:bg-transparent": !isSticky,
-        }
+        },
       )}
     >
       <div
@@ -47,7 +47,7 @@ const Navbar = () => {
               "md:rounded-br-md": isSticky,
             },
             "px-5 md:px-8 py-2",
-            `md:${sectionBgClasses[activeSection]}`
+            `md:${sectionBgClasses[activeSection]}`,
           )}
         >
           Hush Harbor
@@ -83,7 +83,7 @@ const Navbar = () => {
           "px-5 md:px-8 py-1 max-md:pb-2",
           "flex-col md:items-center",
           "transition-colors duration-200",
-          sectionBgClasses[activeSection]
+          sectionBgClasses[activeSection],
         )}
       >
         {navLinks.map((link) => (

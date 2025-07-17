@@ -32,7 +32,7 @@ export function useActiveSection(sectionIds: string[]) {
       {
         rootMargin: "-50% 0px -50% 0px",
         threshold: 0,
-      }
+      },
     );
 
     sectionIds.forEach((id) => {
