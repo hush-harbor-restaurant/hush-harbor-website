@@ -95,7 +95,7 @@ const Navbar = () => {
           const isEventsLink = link.href === "/events";
 
           const isActive = isEventsLink
-            ? pathname === "/events"
+            ? pathname.startsWith("/events")
             : isHome && activeSection === link.href.slice(1);
 
           const resolvedHref = isHashLink ? `/${link.href}` : link.href;
