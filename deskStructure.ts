@@ -3,7 +3,7 @@ import type { StructureBuilder } from "sanity/structure";
 
 export default (S: StructureBuilder) => {
   const defaultItems = S.documentTypeListItems().filter(
-    (item) => !["eventsImage"].includes(item.getId()!),
+    (item) => !["eventsImage", "infoSection"].includes(item.getId()!),
   );
 
   return S.list()
@@ -13,6 +13,11 @@ export default (S: StructureBuilder) => {
         .title("Events Image")
         .child(
           S.document().schemaType("eventsImage").documentId("eventsImage"),
+        ),
+      S.listItem()
+        .title("Info Section")
+        .child(
+          S.document().schemaType("infoSection").documentId("infoSection"),
         ),
       ...defaultItems,
     ]);

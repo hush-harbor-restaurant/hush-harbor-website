@@ -1,5 +1,13 @@
 ---
 import InfoImageOverlay from "./InfoImageOverlay";
+import { sanityClient } from "sanity:client";
+
+const infoSection = await sanityClient.fetch(
+  `*[_type == "infoSection" && _id == "infoSection"][0]{
+    blurb,
+    hours
+  }`
+);
 ---
 
 <section
@@ -13,13 +21,10 @@ import InfoImageOverlay from "./InfoImageOverlay";
         class="flex flex-col self-center mx-auto max-w-xl w-full space-y-4 prose prose-invert prose-stone"
       >
         <h1 class="text-4xl font-bold mt-2">Hush Harbor</h1>
-        <p>
-          A short blurb here about the bar. The picture will transition to an
-          actual photo of the bar's exterior once we have that.
-        </p>
+        <p>{infoSection?.blurb || "A short blurb here about the bar."}</p>
         <div>
           <p class="text-xl font-semibold">
-            Open Wednesday to Saturday 5pm-11pm
+            {infoSection?.hours || "Hours TBD"}
           </p>
         </div>
         <div>
