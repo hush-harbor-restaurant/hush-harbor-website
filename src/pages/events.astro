@@ -1,8 +1,10 @@
 ---
 import "../styles/global.css";
-import Layout from "../layouts/Layout.astro";
-import Navbar from "../components/Navbar";
+
 import { sanityClient } from "sanity:client";
+
+import Navbar from "../components/Navbar";
+import Layout from "../layouts/Layout.astro";
 import type { EventSpace } from "../types";
 
 const eventSpaces: EventSpace[] =
