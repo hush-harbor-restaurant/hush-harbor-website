@@ -49,7 +49,7 @@ const Navbar = () => {
       <div className="flex justify-between items-center max-md:px-4 max-md:py-3">
         <div
           className={clsx(
-            "text-2xl font-bold text-stone-300 px-5 md:px-8 py-2",
+            "text-2xl font-bold text-stone-300 px-1 md:px-8 py-2",
             {
               "bg-leafy-foreground md:rounded-tr-md": !isOnTop,
               "md:rounded-br-md": isOnTop,

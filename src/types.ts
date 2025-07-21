@@ -21,3 +21,12 @@ export interface MenuSection {
     | "happy hour";
   items: MenuItem[];
 }
+
+export interface EventSpace {
+  _id: string;
+  name: string;
+  description: string;
+  imageUrl: string;
+  seated?: number;
+  standing?: number;
+}

@@ -1,6 +1,7 @@
 ---
-import InfoImageOverlay from "./InfoImageOverlay";
 import { sanityClient } from "sanity:client";
+
+import InfoImageOverlay from "./InfoImageOverlay";
 
 const infoSection = await sanityClient.fetch(
   `*[_type == "infoSection" && _id == "infoSection"][0]{

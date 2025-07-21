@@ -1,6 +1,6 @@
 import menuItem from "./menuItem";
 import menuSection from "./menuSection";
-import eventsImage from "./eventsImage";
 import infoSection from "./infoSection";
+import eventSpace from "./eventSpace";
 
-export const schemaTypes = [menuItem, menuSection, eventsImage, infoSection];
+export const schemaTypes = [menuItem, menuSection, infoSection, eventSpace];
