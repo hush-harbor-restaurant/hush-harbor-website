@@ -7,14 +7,22 @@ import Navbar from "../components/Navbar";
 import Layout from "../layouts/Layout.astro";
 import type { EventSpace } from "../types";
 
-const eventSpaces: EventSpace[] =
-  await sanityClient.fetch(`*[_type == "eventSpace"] | order(sortOrder asc){
+const {
+  eventSpaces,
+  eventSpaceBlurb,
+}: {
+  eventSpaces: EventSpace[];
+  eventSpaceBlurb: { blurb?: string };
+} = await sanityClient.fetch(`{
+  "eventSpaces": *[_type == "eventSpace"] | order(sortOrder asc){
     name,
     description,
     "imageUrl": image.asset->url,
     seated,
     standing
-  }`);
+  },
+  "eventSpaceBlurb": *[_type == "eventSpaceBlurb"][0]
+}`);
 ---
 
 <Layout>
@@ -24,7 +32,13 @@ const eventSpaces: EventSpace[] =
     <h1 class="text-4xl font-bold mt-10 md:mt-25 text-center">
       Private Events
     </h1>
-    <p class="text-center mt-4">A blurb here about booking your event.</p>
+    {
+      eventSpaceBlurb?.blurb && (
+        <p class="text-center mt-4 max-w-2xl mx-auto">
+          {eventSpaceBlurb.blurb}
+        </p>
+      )
+    }
   </div>
 
   <section
