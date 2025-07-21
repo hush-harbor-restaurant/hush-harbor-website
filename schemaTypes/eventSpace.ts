@@ -31,5 +31,12 @@ export default {
       title: "Standing Capacity",
       type: "number",
     },
+    {
+      name: "sortOrder",
+      title: "Sort Order",
+      type: "number",
+      description: "Lower numbers appear first",
+      validation: (Rule) => Rule.required(),
+    },
   ],
 };
