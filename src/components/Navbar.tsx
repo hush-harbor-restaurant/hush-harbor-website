@@ -26,7 +26,6 @@ const Navbar = () => {
     setPathname(window.location.pathname);
   }, []);
 
-  // Hooks must be used unconditionally
   const scrollY = useLiveScrollY();
   const activeSection =
     useActiveSection(["home", "info", "menu", "sign-up"]) ?? "home";
