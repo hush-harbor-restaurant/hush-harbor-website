@@ -29,7 +29,7 @@ const signUpSection = await sanityClient.fetch(`*[_type == "signUpSection"][0]{
       signUpSection?.ctaUrl && (
         <a
           href={signUpSection.ctaUrl}
-          class="inline-block bg-leafy-dark text-stone-100 px-8 py-4 rounded-2xl text-lg shadow-lg hover:bg-leafy-foreground transition-colors font-semibold"
+          class="inline-block bg-leafy-dark text-stone-100 px-8 py-4 rounded-2xl text-lg shadow-lg hover:bg-leafy-foreground transition-colors font-semibold min-w-[44px]"
           target="_blank"
           rel="noopener noreferrer"
         >

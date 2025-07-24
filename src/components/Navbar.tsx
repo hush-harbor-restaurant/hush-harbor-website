@@ -39,32 +39,32 @@ const Navbar = () => {
   return (
     <nav
       className={clsx(
-        `text-2xl fixed w-full z-50 text-stone-300 transition-colors duration-200 max-md:bottom-0 md:flex md:justify-between`,
+        `text-2xl fixed w-full z-50 text-stone-300 transition-colors duration-200 max-lg:bottom-0 lg:flex lg:justify-between`,
         backgroundClass,
         {
-          "md:top-0": isOnTop,
-          "md:bottom-0": !isOnTop,
-          "md:bg-transparent": isHome && !isOnTop,
+          "lg:top-0": isOnTop,
+          "lg:bottom-0": !isOnTop,
+          "lg:bg-transparent": isHome && !isOnTop,
           "text-stone-800": activeSection === "sign-up",
         },
       )}
     >
-      <div className="flex justify-between items-center max-md:px-4 max-md:py-3">
+      <div className="flex justify-between items-center max-lg:px-4 max-lg:py-3">
         <div
           className={clsx(
-            "text-2xl font-bold px-1 md:px-8 py-2",
+            "text-2xl font-bold px-1 lg:px-8 py-2",
             {
-              "bg-leafy-foreground md:rounded-tr-md": !isOnTop,
-              "md:rounded-br-md": isOnTop,
+              "bg-leafy-foreground lg:rounded-tr-md": !isOnTop,
+              "lg:rounded-br-md": isOnTop,
             },
-            `md:${backgroundClass}`,
+            `lg:${backgroundClass}`,
           )}
         >
           Hush Harbor
         </div>
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden block cursor-pointer px-4"
+          className="lg:hidden block cursor-pointer px-4"
           aria-label="Toggle Menu"
         >
           <svg
@@ -86,10 +86,10 @@ const Navbar = () => {
           {
             block: isOpen,
             hidden: !isOpen,
-            "md:rounded-bl-md": isOnTop,
-            "md:rounded-tl-md": !isOnTop,
+            "lg:rounded-bl-md": isOnTop,
+            "lg:rounded-tl-md": !isOnTop,
           },
-          "md:flex md:flex-row md:space-x-6 px-5 md:px-8 py-1 max-md:pb-2 flex-col md:items-center transition-colors duration-200",
+          "lg:flex lg:flex-row lg:space-x-6 px-5 lg:px-8 py-1 max-lg:pb-2 flex-col lg:items-center transition-colors duration-200",
           backgroundClass,
         )}
       >
@@ -108,7 +108,7 @@ const Navbar = () => {
               <a
                 href={resolvedHref}
                 className={clsx(
-                  "block max-md:py-3 transition-colors duration-200",
+                  "block max-lg:py-3 transition-colors duration-200",
                   {
                     "font-bold": isActive,
                     "text-amber-500": isActive && activeSection !== "sign-up",
@@ -130,7 +130,7 @@ const Navbar = () => {
             href="https://www.exploretock.com/hill-prince-washington"
             target="_blank"
             rel="noopener noreferrer"
-            className="block max-md:py-3 hover:text-amber-500 transition-colors duration-200"
+            className="block max-lg:py-3 hover:text-amber-500 transition-colors duration-200"
             onClick={() => setIsOpen(false)}
           >
             Make a Reservation
