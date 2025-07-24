@@ -1,0 +1,39 @@
+---
+import { sanityClient } from "sanity:client";
+import { PortableText } from "@portabletext/react";
+
+const signUpSection = await sanityClient.fetch(`*[_type == "signUpSection"][0]{
+  header,
+  body,
+  ctaText,
+  ctaUrl
+}`);
+---
+
+<section
+  id="sign-up"
+  class="relative px-6 pt-24 pb-40 bg-sky text-stone-900 min-h-screen flex items-center justify-center text-center"
+>
+  <div class="max-w-xl space-y-8">
+    <div
+      class="text-4xl md:text-5xl font-bold leading-tight prose prose-stone prose-headings:my-0 prose-invert"
+    >
+      <PortableText value={signUpSection?.header || []} />
+    </div>
+
+    <div class="text-lg leading-relaxed prose prose-stone prose-invert">
+      <PortableText value={signUpSection?.body || []} />
+    </div>
+
+    {
+      signUpSection?.ctaUrl && (
+        <a
+          href={signUpSection.ctaUrl}
+          class="inline-block bg-leafy-dark text-stone-100 px-8 py-4 rounded-2xl text-lg shadow-lg hover:bg-leafy-foreground transition-colors font-semibold"
+        >
+          {signUpSection.ctaText || "Get the Invite"}
+        </a>
+      )
+    }
+  </div>
+</section>

@@ -8,11 +8,13 @@ const sectionBgClasses: Record<string, string> = {
   info: "bg-leafy-foreground",
   menu: "bg-tree-bark",
   events: "bg-leafy-foreground",
+  "sign-up": "bg-sky",
 };
 
 const navLinks = [
   { name: "Info", href: "#info" },
   { name: "Menu", href: "#menu" },
+  { name: "Sign Up", href: "#sign-up" },
   { name: "Events", href: "/events" },
 ];
 
@@ -26,7 +28,8 @@ const Navbar = () => {
 
   // Hooks must be used unconditionally
   const scrollY = useLiveScrollY();
-  const activeSection = useActiveSection(["home", "info", "menu"]) ?? "home";
+  const activeSection =
+    useActiveSection(["home", "info", "menu", "sign-up"]) ?? "home";
 
   const isHome = pathname === "/";
   const isOnTop = !isHome || (isHome && scrollY > 10);
@@ -37,19 +40,20 @@ const Navbar = () => {
   return (
     <nav
       className={clsx(
-        `text-2xl fixed w-full z-50 text-stone-100 transition-colors duration-200 max-md:bottom-0 md:flex md:justify-between`,
+        `text-2xl fixed w-full z-50 text-stone-300 transition-colors duration-200 max-md:bottom-0 md:flex md:justify-between`,
         backgroundClass,
         {
           "md:top-0": isOnTop,
           "md:bottom-0": !isOnTop,
           "md:bg-transparent": isHome && !isOnTop,
+          "text-stone-800": activeSection === "sign-up",
         },
       )}
     >
       <div className="flex justify-between items-center max-md:px-4 max-md:py-3">
         <div
           className={clsx(
-            "text-2xl font-bold text-stone-300 px-1 md:px-8 py-2",
+            "text-2xl font-bold px-1 md:px-8 py-2",
             {
               "bg-leafy-foreground md:rounded-tr-md": !isOnTop,
               "md:rounded-br-md": isOnTop,
@@ -105,10 +109,15 @@ const Navbar = () => {
               <a
                 href={resolvedHref}
                 className={clsx(
-                  "block max-md:py-3 hover:text-amber-500 transition-colors duration-200",
+                  "block max-md:py-3 transition-colors duration-200",
                   {
-                    "font-bold text-amber-500": isActive,
+                    "font-bold": isActive,
+                    "text-amber-500": isActive && activeSection !== "sign-up",
+                    "text-amber-800": isActive && activeSection === "sign-up",
                   },
+                  activeSection === "sign-up"
+                    ? "hover:text-amber-800"
+                    : "hover:text-amber-500",
                 )}
                 onClick={() => setIsOpen(false)}
               >
