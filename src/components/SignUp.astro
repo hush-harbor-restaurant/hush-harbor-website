@@ -1,6 +1,6 @@
 ---
-import { sanityClient } from "sanity:client";
 import { PortableText } from "@portabletext/react";
+import { sanityClient } from "sanity:client";
 
 const signUpSection = await sanityClient.fetch(`*[_type == "signUpSection"][0]{
   header,

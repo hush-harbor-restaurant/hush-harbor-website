@@ -69,7 +69,7 @@ const Navbar = () => {
           aria-label="Toggle Menu"
         >
           <svg
-            className="w-6 h-6 text-stone-100"
+            className="w-6 h-6"
             fill="none"
             stroke="currentColor"
             strokeWidth={2}
