@@ -14,4 +14,12 @@ export default {
       type: "string",
     },
   ],
+  preview: {
+    prepare() {
+      return {
+        title: "Info Settings",
+        subtitle: 'Edit blurb and hours in the "Info" section of the website',
+      };
+    },
+  },
 };

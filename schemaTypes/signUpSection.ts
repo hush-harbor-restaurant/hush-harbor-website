@@ -30,4 +30,11 @@ export default {
       validation: (Rule) => Rule.required(),
     },
   ],
+  preview: {
+    prepare() {
+      return {
+        title: "Sign Up Section blurb",
+      };
+    },
+  },
 };
