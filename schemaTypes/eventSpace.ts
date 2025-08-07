@@ -1,3 +1,5 @@
+// schemas/eventSpace.ts
+
 export default {
   name: "eventSpace",
   title: "Event Space",
@@ -30,6 +32,13 @@ export default {
       name: "standing",
       title: "Standing Capacity",
       type: "number",
+    },
+    {
+      name: "reservationUrl",
+      title: "Reservation URL",
+      type: "url",
+      description: "Link to reservation page (e.g., Tock or other system)",
+      validation: (Rule) => Rule.uri({ scheme: ["http", "https"] }),
     },
     {
       name: "sortOrder",

@@ -1,12 +1,18 @@
 ---
 import { sanityClient } from "sanity:client";
-
 import InfoImageOverlay from "./InfoImageOverlay";
 
 const infoSection = await sanityClient.fetch(
   `*[_type == "infoSection" && _id == "infoSection"][0]{
     blurb,
     hours
+  }`
+);
+
+const infoImage = await sanityClient.fetch(
+  `*[_type == "infoImage"][0]{
+    "imageUrl": image.asset->url,
+    alt
   }`
 );
 ---
@@ -40,7 +46,7 @@ const infoSection = await sanityClient.fetch(
       </div>
 
       <!-- Right: Info Image -->
-      <InfoImageOverlay client:load />
+      <InfoImageOverlay infoImage={infoImage} client:load />
     </div>
   </div>
 

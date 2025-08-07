@@ -18,7 +18,7 @@ const navLinks = [
   { name: "Events", href: "/events" },
 ];
 
-const Navbar = () => {
+const Navbar = ({ reservationUrl }: { reservationUrl: string }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [pathname, setPathname] = useState("/");
 
@@ -127,7 +127,7 @@ const Navbar = () => {
         })}
         <li>
           <a
-            href="https://www.exploretock.com/hill-prince-washington"
+            href={reservationUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="block max-lg:py-3 hover:text-amber-500 transition-colors duration-200"

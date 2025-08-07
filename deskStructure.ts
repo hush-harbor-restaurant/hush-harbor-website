@@ -9,6 +9,8 @@ export default (S: StructureBuilder) => {
         "eventSpace",
         "eventSpaceBlurb",
         "signUpSection",
+        "infoImage",
+        "navbarSettings",
       ].includes(item.getId()!),
   );
 
@@ -35,6 +37,16 @@ export default (S: StructureBuilder) => {
         .child(
           S.document().schemaType("signUpSection").documentId("signUpSection"),
         ),
+      S.listItem()
+        .title("Info Section Image")
+        .child(S.document().schemaType("infoImage").documentId("infoImage")),
       ...defaultItems,
+      S.listItem()
+        .title("Navbar Settings")
+        .child(
+          S.document()
+            .schemaType("navbarSettings")
+            .documentId("navbarSettings"),
+        ),
     ]);
 };

@@ -19,14 +19,20 @@ const {
     description,
     "imageUrl": image.asset->url,
     seated,
-    standing
+    standing,
+    reservationUrl
   },
   "eventSpaceBlurb": *[_type == "eventSpaceBlurb"][0]
 }`);
+
+const { navbarSettings }: { navbarSettings: { reservationUrl: string } } =
+  await sanityClient.fetch(`{
+    "navbarSettings": *[_type == "navbarSettings"][0]
+  }`);
 ---
 
 <Layout>
-  <Navbar client:load />
+  <Navbar reservationUrl={navbarSettings.reservationUrl} client:load />
 
   <div class="text-stone-300 px-10 mb-6">
     <h1 class="text-4xl font-bold mt-10 md:mt-25 text-center">
@@ -68,14 +74,16 @@ const {
                   <strong>Standing:</strong> {space.standing}
                 </p>
               </div>
-              <a
-                href="https://www.exploretock.com/hill-prince-washington"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center justify-center bg-bayou-gold text-black font-semibold px-6 py-3 rounded-md shadow hover:bg-yellow-400 transition text-center"
-              >
-                Reserve
-              </a>
+              {space.reservationUrl && (
+                <a
+                  href={space.reservationUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center justify-center bg-bayou-gold text-black font-semibold px-6 py-3 rounded-md shadow hover:bg-yellow-400 transition text-center"
+                >
+                  Reserve
+                </a>
+              )}
             </div>
           </div>
         </div>

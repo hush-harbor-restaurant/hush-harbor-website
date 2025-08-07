@@ -22,11 +22,11 @@ export interface MenuSection {
   items: MenuItem[];
 }
 
-export interface EventSpace {
-  _id: string;
+export type EventSpace = {
   name: string;
   description: string;
   imageUrl: string;
-  seated?: number;
-  standing?: number;
-}
+  seated: number;
+  standing: number;
+  reservationUrl?: string;
+};

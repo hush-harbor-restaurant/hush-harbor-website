@@ -1,7 +1,13 @@
 import { useLiveScrollY } from "../hooks/useLiveScrollY";
 import artwork from "../images/painting.png";
-import frontOfBar from "../images/front_of_bar.jpg";
 import { useState, useEffect, useRef, type RefObject } from "react";
+
+type InfoImageOverlayProps = {
+  infoImage: {
+    imageUrl: string;
+    alt?: string;
+  };
+};
 
 function computeOverlayOpacity(ref: RefObject<HTMLDivElement | null>): number {
   if (!ref.current) return 0;
@@ -18,7 +24,7 @@ function computeOverlayOpacity(ref: RefObject<HTMLDivElement | null>): number {
   return startOpacityTransition / endOpacityTransition;
 }
 
-const InfoImageOverlay = () => {
+const InfoImageOverlay = ({ infoImage }: InfoImageOverlayProps) => {
   const scrollY = useLiveScrollY();
   const ref = useRef<HTMLDivElement | null>(null);
   const [opacity, setOpacity] = useState(0);
@@ -36,8 +42,8 @@ const InfoImageOverlay = () => {
           className="absolute inset-0 w-full h-full object-cover rounded-lg z-0"
         />
         <img
-          src={frontOfBar.src}
-          alt="Front of the bar"
+          src={infoImage.imageUrl}
+          alt={infoImage.alt ?? "Overlay image"}
           className="absolute inset-0 w-full h-full object-cover rounded-lg z-10"
           style={{ opacity }}
         />

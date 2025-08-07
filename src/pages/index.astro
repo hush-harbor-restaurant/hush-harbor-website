@@ -8,10 +8,15 @@ import Navbar from "../components/Navbar";
 import SignUp from "../components/SignUp.astro";
 import picture from "../images/painting.png";
 import Layout from "../layouts/Layout.astro";
+
+const { navbarSettings }: { navbarSettings: { reservationUrl: string } } =
+  await sanityClient.fetch(`{
+    "navbarSettings": *[_type == "navbarSettings"][0]
+  }`);
 ---
 
 <Layout>
-  <Navbar client:load />
+  <Navbar reservationUrl={navbarSettings.reservationUrl} client:load />
   <section id="home">
     <CoverImage src={picture} alt="Painting of trees and a pond" />
   </section>
