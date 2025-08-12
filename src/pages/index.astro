@@ -1,6 +1,8 @@
 ---
 import "../styles/global.css";
 
+import { sanityClient } from "sanity:client";
+
 import CoverImage from "../components/CoverImage.astro";
 import Info from "../components/Info.astro";
 import Menu from "../components/Menu.astro";
@@ -8,7 +10,6 @@ import Navbar from "../components/Navbar";
 import SignUp from "../components/SignUp.astro";
 import picture from "../images/painting.png";
 import Layout from "../layouts/Layout.astro";
-import { sanityClient } from "sanity:client";
 
 const ogImageAbs = new URL(picture.src, Astro.site).toString();
 
