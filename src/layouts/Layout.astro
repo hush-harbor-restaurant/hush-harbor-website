@@ -1,27 +1,67 @@
 ---
 import "../styles/global.css";
+
+const {
+  title = "Hush Harbor – Cocktail Bar in Washington, DC",
+  description =
+    "Escape the noise. Hush Harbor is a phone-free bar in Washington, DC where you can connect, unwind, and be fully present.",
+  ogImage = "/images/social-share.jpg",
+  canonical,
+  noindex = false,
+  schema = [],
+} = Astro.props as {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  canonical?: string;
+  noindex?: boolean;
+  schema?: any[];
+};
+
+const site = Astro.site?.href?.replace(/\/$/, "") ?? "https://hushharbor.co";
+const url = canonical ?? site + Astro.url.pathname;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Lora&display=swap"
       rel="stylesheet"
     />
+
     <meta name="generator" content={Astro.generator} />
-    <title>Hush Harbor</title>
-    <meta
-      name="description"
-      content="Escape the noise. Hush Harbor is a phone-free bar in Washington, DC where you can connect, unwind, and be fully present."
-    />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://hushharbor.co/" />
+
+    <!-- Primary SEO -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
+    <link rel="canonical" href={url} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={url} />
+    <meta property="og:image" content={`${site}${ogImage}`} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${site}${ogImage}`} />
+
+    <!-- JSON-LD -->
+    {schema.map((obj) => (
+      <script type="application/ld+json">{JSON.stringify(obj)}</script>
+    ))}
   </head>
   <body class="bg-leafy-foreground">
     <slot />
@@ -30,9 +70,5 @@ import "../styles/global.css";
 
 <style>
   html,
-  body {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-  }
+  body { margin: 0; width: 100%; height: 100%; }
 </style>

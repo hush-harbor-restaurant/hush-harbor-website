@@ -1,0 +1,28 @@
+---
+import "../styles/global.css";
+
+import { sanityClient } from "sanity:client";
+
+import Navbar from "../components/Navbar";
+import Layout from "../layouts/Layout.astro";
+
+const { navbarSettings }: { navbarSettings: { reservationUrl: string } } =
+  await sanityClient.fetch(`{
+    "navbarSettings": *[_type == "navbarSettings"][0]
+  }`);
+---
+
+<Layout>
+  <Navbar reservationUrl={navbarSettings.reservationUrl} client:load />
+
+  <div class="text-stone-300 px-10 mb-6">
+    <h1 class="text-4xl font-bold mt-10 md:mt-25 text-center">
+      404 - Page Not Found
+    </h1>
+    <p class="mt-4 text-center">
+      Head on back to the <a class="underline text-blue-300" href="/"
+        >homepage</a
+      >.
+    </p>
+  </div>
+</Layout>

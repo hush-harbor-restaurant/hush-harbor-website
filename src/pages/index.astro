@@ -8,14 +8,47 @@ import Navbar from "../components/Navbar";
 import SignUp from "../components/SignUp.astro";
 import picture from "../images/painting.png";
 import Layout from "../layouts/Layout.astro";
+import { sanityClient } from "sanity:client";
+
+const ogImageAbs = new URL(picture.src, Astro.site).toString();
 
 const { navbarSettings }: { navbarSettings: { reservationUrl: string } } =
   await sanityClient.fetch(`{
     "navbarSettings": *[_type == "navbarSettings"][0]
   }`);
+
+const restaurantSchema = {
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  name: "Hush Harbor",
+  url: "https://hushharbor.co/",
+  telephone: "+1-202-399-1337",
+  priceRange: "$$",
+  servesCuisine: ["Cocktails", "Small Plates"],
+  image: ogImageAbs,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "1337 H Street NE",
+    addressLocality: "Washington",
+    addressRegion: "DC",
+    postalCode: "20002",
+    addressCountry: "US",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 38.9007,
+    longitude: -76.9866,
+  },
+  acceptsReservations: true,
+};
 ---
 
-<Layout>
+<Layout
+  title="Hush Harbor – Cocktail Bar"
+  description="Phone-free cocktail bar on H Street NE serving craft drinks and small plates. Make a reservation, view our menu, and plan your night."
+  ogImage={picture.src}
+  schema={[restaurantSchema]}
+>
   <Navbar reservationUrl={navbarSettings.reservationUrl} client:load />
   <section id="home">
     <CoverImage src={picture} alt="Painting of trees and a pond" />
