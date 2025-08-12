@@ -39,7 +39,7 @@ const Navbar = ({ reservationUrl }: { reservationUrl: string }) => {
   return (
     <nav
       className={clsx(
-        `text-2xl fixed w-full z-50 text-stone-300 transition-colors duration-200 max-lg:bottom-0 lg:flex lg:justify-between`,
+        `md:text-2xl text-lg fixed w-full z-50 text-stone-300 transition-colors duration-200 max-lg:bottom-0 lg:flex lg:justify-between`,
         backgroundClass,
         {
           "lg:top-0": isOnTop,
@@ -52,7 +52,7 @@ const Navbar = ({ reservationUrl }: { reservationUrl: string }) => {
       <div className="flex justify-between items-center max-lg:px-4 max-lg:py-3">
         <div
           className={clsx(
-            "text-2xl font-bold px-1 lg:px-8 py-2",
+            "font-bold px-1 lg:px-8 py-2",
             {
               "bg-leafy-foreground lg:rounded-tr-md": !isOnTop,
               "lg:rounded-br-md": isOnTop,
