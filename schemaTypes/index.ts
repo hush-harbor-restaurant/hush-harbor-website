@@ -4,7 +4,6 @@ import infoSection from "./infoSection";
 import eventSpace from "./eventSpace";
 import eventSpaceBlurb from "./eventSpaceBlurb";
 import signUpSection from "./signUpSection";
-import infoImage from "./infoImage";
 import navbarSettings from "./navbarSettings";
 
 export const schemaTypes = [
@@ -14,6 +13,5 @@ export const schemaTypes = [
   eventSpace,
   eventSpaceBlurb,
   signUpSection,
-  infoImage,
   navbarSettings,
 ];

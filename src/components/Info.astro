@@ -9,13 +9,6 @@ const infoSection = await sanityClient.fetch(
     hours
   }`
 );
-
-const infoImage = await sanityClient.fetch(
-  `*[_type == "infoImage"][0]{
-    "imageUrl": image.asset->url,
-    alt
-  }`
-);
 ---
 
 <section
@@ -47,7 +40,7 @@ const infoImage = await sanityClient.fetch(
       </div>
 
       <!-- Right: Info Image -->
-      <InfoImageOverlay infoImage={infoImage} client:load />
+      <InfoImageOverlay client:load />
     </div>
   </div>
 
