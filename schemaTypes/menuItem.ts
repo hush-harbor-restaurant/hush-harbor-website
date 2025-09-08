@@ -1,6 +1,4 @@
-import { defineType } from "sanity";
-
-export default defineType({
+export default {
   name: "menuItem",
   title: "Menu Item",
   type: "document",
@@ -36,4 +34,4 @@ export default defineType({
       of: [{ type: "string" }],
     },
   ],
-});
+};

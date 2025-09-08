@@ -9,10 +9,10 @@ import type { EventSpace } from "../types";
 
 const {
   eventSpaces,
-  eventSpaceBlurb,
+  eventPage,
 }: {
   eventSpaces: EventSpace[];
-  eventSpaceBlurb: { blurb?: string };
+  eventPage: { blurb?: string } | null;
 } = await sanityClient.fetch(`{
   "eventSpaces": *[_type == "eventSpace"] | order(sortOrder asc){
     name,
@@ -22,7 +22,7 @@ const {
     standing,
     reservationUrl
   },
-  "eventSpaceBlurb": *[_type == "eventSpaceBlurb"][0]
+  "eventPage": *[_type == "eventPage"][0]
 }`);
 
 const { navbarSettings }: { navbarSettings: { reservationUrl: string } } =
@@ -39,10 +39,8 @@ const { navbarSettings }: { navbarSettings: { reservationUrl: string } } =
       Private Events
     </h1>
     {
-      eventSpaceBlurb?.blurb && (
-        <p class="text-center mt-4 max-w-2xl mx-auto">
-          {eventSpaceBlurb.blurb}
-        </p>
+      eventPage?.blurb && (
+        <p class="text-center mt-4 max-w-2xl mx-auto">{eventPage.blurb}</p>
       )
     }
   </div>

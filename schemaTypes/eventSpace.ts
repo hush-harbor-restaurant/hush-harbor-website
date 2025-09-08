@@ -1,5 +1,3 @@
-// schemas/eventSpace.ts
-
 export default {
   name: "eventSpace",
   title: "Event Space",

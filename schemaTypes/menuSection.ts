@@ -1,6 +1,4 @@
-import { defineType } from "sanity";
-
-export default defineType({
+export default {
   name: "menuSection",
   title: "Menu Section",
   type: "document",
@@ -30,4 +28,4 @@ export default defineType({
       description: "Used to order sections on the page",
     },
   ],
-});
+};

@@ -7,7 +7,7 @@ export default (S: StructureBuilder) => {
         "eventsImage",
         "infoSection",
         "eventSpace",
-        "eventSpaceBlurb",
+        "eventPage",
         "signUpSection",
         "infoImage",
         "navbarSettings",
@@ -18,21 +18,29 @@ export default (S: StructureBuilder) => {
     .title("Content")
     .items([
       S.listItem()
+        .title("Event Page")
+        .child(
+          S.list()
+            .title("Event Page")
+            .items([
+              S.listItem()
+                .title("Page Settings")
+                .child(
+                  S.document().schemaType("eventPage").documentId("eventPage"),
+                ),
+              S.listItem()
+                .title("Event Spaces")
+                .child(S.documentTypeList("eventSpace").title("Event Spaces")),
+            ]),
+        ),
+
+      // Other content
+      S.listItem()
         .title("Info Section")
         .child(
           S.document().schemaType("infoSection").documentId("infoSection"),
         ),
       S.listItem()
-        .title("Events Blurb")
-        .child(
-          S.document()
-            .schemaType("eventSpaceBlurb")
-            .documentId("eventSpaceBlurb"),
-        ),
-      S.listItem()
-        .title("Event Spaces")
-        .child(S.documentTypeList("eventSpace").title("Event Spaces")),
-      S.listItem() // ✅ Add this block
         .title("Sign Up Section")
         .child(
           S.document().schemaType("signUpSection").documentId("signUpSection"),
