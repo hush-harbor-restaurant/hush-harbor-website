@@ -13,12 +13,18 @@ export default {
       title: "Open Hours",
       type: "string",
     },
+    {
+      name: "image",
+      title: "Info Image",
+      type: "image",
+      options: { hotspot: true },
+    },
   ],
   preview: {
     prepare() {
       return {
         title: "Info Settings",
-        subtitle: 'Edit blurb and hours in the "Info" section of the website',
+        subtitle: 'Edit blurb, hours, and image in the "Info" section',
       };
     },
   },

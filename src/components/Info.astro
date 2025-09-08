@@ -1,12 +1,11 @@
 ---
 import { sanityClient } from "sanity:client";
 
-import InfoImageOverlay from "./InfoImageOverlay";
-
 const infoSection = await sanityClient.fetch(
   `*[_type == "infoSection" && _id == "infoSection"][0]{
     blurb,
-    hours
+    hours,
+    "imageUrl": image.asset->url
   }`
 );
 ---
@@ -17,7 +16,6 @@ const infoSection = await sanityClient.fetch(
 >
   <div class="mx-auto w-9xl">
     <div class="grid lg:grid-cols-2 gap-10 md:gap-20 items-center">
-      <!-- Left: Info Text -->
       <div
         class="flex flex-col self-center mx-auto max-w-xl w-full space-y-4 prose prose-invert prose-stone"
       >
@@ -38,9 +36,19 @@ const infoSection = await sanityClient.fetch(
           </p>
         </div>
       </div>
-
-      <!-- Right: Info Image -->
-      <InfoImageOverlay client:load />
+      <div class="w-full flex justify-center">
+        <div class="relative w-full max-w-[400px] aspect-square">
+          {
+            infoSection?.imageUrl && (
+              <img
+                src={infoSection.imageUrl}
+                alt="Info section image"
+                class="object-cover w-full h-full rounded-lg shadow-lg"
+              />
+            )
+          }
+        </div>
+      </div>
     </div>
   </div>
 
