@@ -29,6 +29,38 @@ export default {
       type: "url",
       validation: (Rule) => Rule.required(),
     },
+    {
+      name: "horizontalImages",
+      title: "Horizontal Images (4)",
+      type: "array",
+      of: [
+        {
+          type: "image",
+          options: { hotspot: true },
+        },
+      ],
+      validation: (Rule) =>
+        Rule.required()
+          .min(4)
+          .max(4)
+          .error("Exactly 4 horizontal images are required."),
+    },
+    {
+      name: "verticalImages",
+      title: "Vertical Images (2)",
+      type: "array",
+      of: [
+        {
+          type: "image",
+          options: { hotspot: true },
+        },
+      ],
+      validation: (Rule) =>
+        Rule.required()
+          .min(2)
+          .max(2)
+          .error("Exactly 2 vertical images are required."),
+    },
   ],
   preview: {
     prepare() {

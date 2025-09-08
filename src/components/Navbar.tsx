@@ -6,9 +6,9 @@ import clsx from "clsx";
 const sectionBgClasses: Record<string, string> = {
   home: "bg-leafy-foreground",
   info: "bg-leafy-foreground",
-  menu: "bg-tree-bark",
+  "sign-up": "bg-tree-bark",
   events: "bg-leafy-foreground",
-  "sign-up": "bg-sky",
+  menu: "bg-sky",
 };
 
 const navLinks = [
@@ -45,7 +45,7 @@ const Navbar = ({ reservationUrl }: { reservationUrl: string }) => {
           "lg:top-0": isOnTop,
           "lg:bottom-0": !isOnTop,
           "lg:bg-transparent": isHome && !isOnTop,
-          "text-stone-800": activeSection === "sign-up",
+          "text-stone-800": activeSection === "menu",
         },
       )}
     >
@@ -111,10 +111,10 @@ const Navbar = ({ reservationUrl }: { reservationUrl: string }) => {
                   "block max-lg:py-3 transition-colors duration-200",
                   {
                     "font-bold": isActive,
-                    "text-amber-500": isActive && activeSection !== "sign-up",
-                    "text-amber-800": isActive && activeSection === "sign-up",
+                    "text-amber-500": isActive && activeSection !== "menu",
+                    "text-amber-800": isActive && activeSection === "menu",
                   },
-                  activeSection === "sign-up"
+                  activeSection === "menu"
                     ? "hover:text-amber-800"
                     : "hover:text-amber-500",
                 )}

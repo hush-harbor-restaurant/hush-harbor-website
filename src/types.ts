@@ -1,3 +1,5 @@
+import type { PortableTextBlock } from "sanity";
+
 export interface MenuItem {
   _id: string;
   name: string;
@@ -29,4 +31,19 @@ export type EventSpace = {
   seated: number;
   standing: number;
   reservationUrl?: string;
+};
+
+export type SignUpSection = {
+  header: PortableTextBlock[];
+  body: PortableTextBlock[];
+  ctaText: string;
+  ctaUrl: string;
+  horizontalImages?: {
+    _key: string;
+    url: string;
+  }[];
+  verticalImages?: {
+    _key: string;
+    url: string;
+  }[];
 };

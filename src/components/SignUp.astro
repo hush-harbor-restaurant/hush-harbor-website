@@ -1,27 +1,58 @@
 ---
+import GridImage from "../components/GridImage.astro";
 import { PortableText } from "@portabletext/react";
 import { sanityClient } from "sanity:client";
+import type { SignUpSection } from "../types";
 
-const signUpSection = await sanityClient.fetch(`*[_type == "signUpSection"][0]{
-  header,
-  body,
-  ctaText,
-  ctaUrl
-}`);
+const signUpSection: SignUpSection =
+  await sanityClient.fetch(`*[_type == "signUpSection"][0]{
+    header,
+    body,
+    ctaText,
+    ctaUrl,
+    verticalImages[]{ _key, "url": asset->url },
+    horizontalImages[]{ _key, "url": asset->url }
+  }`);
 ---
 
 <section
   id="sign-up"
-  class="relative px-6 pt-24 pb-40 bg-sky text-stone-900 min-h-screen flex items-center justify-center text-center"
+  class="relative px-6 md:pt-24 pt-10 pb-18 md:pb-4 bg-tree-bark text-stone-300 min-h-screen
+         grid grid-cols-1 grid-rows-[auto] text-center
+         lg:grid-cols-3 lg:grid-rows-3 lg:place-items-stretch gap-2"
 >
-  <div class="max-w-xl space-y-8">
+  <!-- H1 -->
+  <GridImage
+    img={signUpSection?.horizontalImages?.[0]}
+    class="lg:col-start-1 lg:row-start-1"
+  />
+  <!-- H2 -->
+  <GridImage
+    img={signUpSection?.horizontalImages?.[1]}
+    class="lg:col-start-2 lg:row-start-1"
+  />
+
+  <!-- V1 (hide on mobile) -->
+  <GridImage
+    img={signUpSection?.verticalImages?.[0]}
+    class="hidden lg:block lg:col-start-3 lg:row-start-1 lg:row-span-2"
+  />
+
+  <!-- V2 (hide on mobile) -->
+  <GridImage
+    img={signUpSection?.verticalImages?.[1]}
+    class="hidden lg:block lg:col-start-1 lg:row-start-2 lg:row-span-2"
+  />
+
+  <!-- Text block sits after the first two on mobile -->
+  <div class="max-w-xl p-6 m-auto lg:col-start-2 lg:row-start-2">
     <div
-      class="text-4xl md:text-5xl font-bold leading-tight prose prose-stone prose-headings:my-0 prose-invert"
+      class="text-2xl md:text-3xl font-bold leading-tight prose prose-stone prose-headings:my-0 prose-invert mb-2"
     >
       <PortableText value={signUpSection?.header || []} />
     </div>
 
-    <div class="text-lg leading-relaxed prose prose-stone prose-invert">
+    <div class="text-md leading-relaxed prose prose-stone prose-invert mb-4">
       <PortableText value={signUpSection?.body || []} />
     </div>
 
@@ -29,7 +60,7 @@ const signUpSection = await sanityClient.fetch(`*[_type == "signUpSection"][0]{
       signUpSection?.ctaUrl && (
         <a
           href={signUpSection.ctaUrl}
-          class="inline-block bg-leafy-dark text-stone-100 px-8 py-4 rounded-2xl text-lg shadow-lg hover:bg-leafy-foreground transition-colors font-semibold min-w-[44px]"
+          class="inline-block bg-leafy-dark text-amber-500 px-8 py-4 rounded-2xl text-lg shadow-lg hover:bg-leafy-foreground transition-colors font-semibold min-w-[44px]"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -38,4 +69,15 @@ const signUpSection = await sanityClient.fetch(`*[_type == "signUpSection"][0]{
       )
     }
   </div>
+
+  <!-- H3 -->
+  <GridImage
+    img={signUpSection?.horizontalImages?.[2]}
+    class="lg:col-start-2 lg:row-start-3"
+  />
+  <!-- H4 -->
+  <GridImage
+    img={signUpSection?.horizontalImages?.[3]}
+    class="lg:col-start-3 lg:row-start-3"
+  />
 </section>

@@ -1,0 +1,24 @@
+---
+interface Img {
+  _key?: string;
+  url: string;
+}
+export interface Props {
+  img?: Img;
+  alt?: string;
+  class?: string;
+}
+const { img, alt = "", class: cls = "" } = Astro.props;
+---
+
+{
+  img && (
+    <div class={`overflow-hidden w-full h-full ${cls}`}>
+      <img
+        src={img.url}
+        alt={alt}
+        class="w-full h-full object-cover transition-transform duration-500 ease-in-out hover:scale-103"
+      />
+    </div>
+  )
+}
